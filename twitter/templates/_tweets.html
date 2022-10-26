@@ -1,0 +1,25 @@
+<table>
+	{% if tweets %}
+	{% for tweet in tweets %}
+	<tr class="tweet_hover">
+		<td><img src="{{ tweet.author.avatar(55) }}" alt=""></td>
+		<td>
+			<a class="m-2 text-decoration-none" href="{{ url_for('user_page',username=tweet.author.username) }}"><b>{{ tweet.author.username }} </b></a>  
+			{{ tweet.create_time }}<br>
+			<p class="d-block m-2">{{ tweet.body }}</p>
+	
+		</td>
+		<td>
+			{% if current_user_user_id == tweet.author.id %}
+			<button class="btn btn-info btn-sm m-1" type="submit"><a class="text-decoration-none" href="{{ url_for('edit_tweet_page',tweet_id=tweet.id) }}">Edit</a></button>
+			<button class="btn btn-warning btn-sm" type="submit"><a class="text-decoration-none" href="{{ url_for('delete_tweet_page',tweet_id=tweet.id) }}">Delete</a></button>
+			{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	<br>
+	<br>
+	<h1>很抱歉，目前無資料</h1>
+	{% endif %}
+</table>

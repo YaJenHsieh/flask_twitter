@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row user_bg">
+	<div class="col-lg-4"></div>
+	<table  class="col-lg-4" >
+		<tr>
+			<td><img src="{{ user.avatar(180) }}" alt=""></td>
+			<td>
+				<p><b>{{ user.username }}</b> , Welcome back!</p>
+				<p>
+					Follower {{ user.followers.count() }}  Following {{ user.followed.count() }}
+				</p>
+	
+				<form method="post">
+					{% if user != current_user %} 
+					{% if current_user.is_following(user) %}
+					<input class="btn btn-primary" type="submit" name="request_btn" value="Unfollow">
+					{% else %}
+					<input class="btn btn-outline-primary" type="submit" name="request_btn" value="Follow">
+					{% endif %}
+					{% endif %}
+				</form>
+	
+				{% if user.about_me %}
+				<p>About Me:{{ user.about_me }}</p>
+				{% endif %}
+	
+				{% if user.create_time %}
+				<p>Joined:{{ user.create_time }}</p>
+				{% endif %}
+	
+				{% if user == current_user %}
+				<p><a class="text-decoration-none" href="{{ url_for('editProfile_page') }}">Edit Your Profile</a></p>
+				{% endif %}
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="row mt-3 user_content">
+	<div class="col-lg-4"></div>
+	<div class="col-lg-8">
+		{% include '_tweets.html' %}
+
+		{% if prev_url %}
+		<a class="text-decoration-none m-5" href="{{ prev_url }}">Prev Page</a>
+		{% endif %}
+		{% if next_url %}
+		<a class="text-decoration-none m-5" href="{{ next_url }}">Next Page</a>
+		{% endif %}
+	</div>
+	<br>
+	<br>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<div class="col-md-4 my-5">
+	<h2 class="text-center my-3">熱門新聞</h2>
+	<div class="container-fluid">
+		{% for i in news_data['articles'] %}
+		<div class="container d-flex" style="width:110%;">
+			<img class="w-50 m-2" src="{{ i['urlToImage'] }}" alt="">
+			<div class="my-1">
+				<a class="text-decoration-none" target="_blank" href="{{ i['url'] }}">
+					<div class="news_title">{{ i['title'] }}</div>
+				</a>
+				{{ i['publishedAt'].replace("T"," ").replace("Z","") }} <br>
+				
+				{% if i['author'] == None %}
+					<p></p>
+				{% else %}
+					{{ i['author'] }}
+				{% endif %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>

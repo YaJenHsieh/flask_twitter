@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if searched %}
+<div class="row m-5">
+	<div class="col-md-4"></div>
+	<div class="col-md-8">
+		{% include '_tweets.html' %}
+
+		{% if prev_url %}
+		<a class="text-decoration-none m-5" href="{{ prev_url }}">Prev Page</a>
+		{% endif %}
+		{% if next_url %}
+		<a class="text-decoration-none m-5" href="{{ next_url }}">Next Page</a>
+		{% endif %}
+	</div>
+</div>
+{% else %}
+<div class="edit_profile_container">
+	<div class="edit_profile_form">
+		<h1>Edit Profile</h1>
+		<form method="post">
+			{{ form.hidden_tag() }}
+			<div>
+				{{ form.about_me.label }}<br>
+				{{ form.about_me(cols=40,row=5) }}<br>
+				{% for error in form.about_me.errors %}
+				<p style="color:red;">{{ error }}</p>
+				{% endfor %}
+			</div>
+			<br>
+				{{ form.submit(class="btn btn-lg btn-success") }}
+		</form>
+	</div>
+</div>
+{% endif %}
+{% endblock %}

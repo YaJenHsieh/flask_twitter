@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+	{% block content %}
+	<div class="row explore_content mt-3 ">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-8">
+		{% include '_tweets.html' %}
+			
+			{% if prev_url %}
+			<a class="text-decoration-none m-5" href="{{ prev_url }}">Prev Page</a>
+			{% endif %}
+			{% if next_url %}
+			<a class="text-decoration-none m-5" href="{{ next_url }}">Next Page</a>
+			{% endif %}
+
+		</div>
+	</div>
+	{% endblock %}

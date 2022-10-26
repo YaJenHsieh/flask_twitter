@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="POST">
+{{ form.hidden_tag() }}
+	<div class="login_container">
+		<div class="login_form">
+			<h2 class="login">Please Login</h2>
+			<div class="input_login_container">
+				{{ form.username.label() }}
+				{{ form.username(placeholder="Username") }}
+				{% for error in form.username.errors %}
+				<p style="color:red;">{{ error }}</p>
+				{% endfor %}
+			</div>
+			<div class="input_login_container">
+				{{ form.password.label() }}
+				{{ form.password(placeholder="Password") }}
+				{% for error in form.password.errors %}
+				<p style="color:red;">{{ error }}</p>
+				{% endfor %}
+			</div>
+			
+			<div class="input_login_container d-flex justify-content-around">
+				<p>
+					{{ form.remember_me() }}
+					{{ form.remember_me.label() }}
+				</p>
+				<a style="text-decoration:none" href="{{ url_for('password_reset_request') }}">Forgot Password?</a>
+			</div>
+				{{ form.submit(class="btn btn-lg btn-primary") }}
+			<br>
+			<hr>
+			<div>
+				<h6>Don't have an account? <a class="btn btn-sm btn-success" href="{{ url_for('register_page') }}">Click Here to Register</a></h6>
+			</div>
+		</div>
+	</div>
+</form>
+
+{% endblock %}

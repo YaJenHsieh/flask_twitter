@@ -1,0 +1,15 @@
+Flask
+gunicorn
+flask_sqlalchemy
+flask_migrate
+flask_login
+flask_mail
+flask_wtf
+wtforms
+pytz
+validators
+jwt
+email_validator
+psycopg2
+pymysql
+requests

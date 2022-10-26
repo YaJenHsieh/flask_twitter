@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid home_height">
+	<div class="row">
+		{% include '_home_profile.html' %}
+		<div class="col-md-5 my-5">
+			<h1 class="text-center">Hello <a class="text-decoration-none" href="/{{ current_user.username }}">{{ current_user.username }}</a>
+			</h1>
+			<form method="post" class="text-center">
+			{{ form.hidden_tag() }}
+				<p class="card-body">
+					{{ form.tweet.label }}<br>
+					{{ form.tweet(cols=30,row=10) }}<br>
+					<button class="btn btn-info" type="submit">Tweet</button>
+				</p>
+			</form>
+			<div class="col-md-10 m-5">
+				{% include '_tweets.html' %}
+	
+				{% if prev_url %}
+				<a class="text-decoration-none m-5" href="{{ prev_url }}">Prev Page</a>
+				{% endif %}
+				{% if next_url %}
+				<a class="text-decoration-none m-5" href="{{ next_url }}">Next Page</a>
+				{% endif %}
+			</div>
+		</div>
+		{% include '_news.html' %}
+	</div>
+</div>	
+
+{% endblock %}

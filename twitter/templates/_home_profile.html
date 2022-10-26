@@ -1,0 +1,31 @@
+<div class="col-md-3 my-5">
+	<h1 class="text-center my-2">Profile</h1>
+	<div class="container-fluid d-flex justify-content-center home_page_profile">
+		<div class="m-3">
+			<img src="{{ current_user.avatar(60) }}" alt="">
+		</div>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<h2 colspan="2" class="my-2"><a class="text-decoration-none" href="/{{ current_user.username }}">{{ current_user.username }}</a></h2>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Follower</td>
+						<td></td>
+						<td></td>
+						<td>Following</td>
+					</tr>
+					<tr>
+						<td>{{ current_user.followers.count() }}</td>
+						<td></td>
+						<td></td>
+						<td>{{ current_user.followed.count() }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -20,4 +20,4 @@ Heroku 雲端主機部署網站
 
 ![GITHUB]( https://images.cakeresume.com/jvMvN/jennyhsieh/c72c102e-bfe8-4820-b46b-f8a697a788a0.png "Twitter網站")
 
-![GITHUB]( https://images.cakeresume.com/jvMvN/jennyhsieh/766595db-8ca1-4c1c-9759-3849b841a451.png"Twitter網站")
+![GITHUB]( https://www.cakeresume.com/cdn-cgi/image/fit=scale-down,format=auto,w=828/https://images.cakeresume.com/jvMvN/jennyhsieh/766595db-8ca1-4c1c-9759-3849b841a451.png"Twitter網站")

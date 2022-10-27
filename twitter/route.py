@@ -9,6 +9,7 @@ from twitter.email import send_email
 
 from twitter.models.tweet import Tweet
 from twitter.models.user import User
+from twitter.weather import cwb_weather_data
 
 @app.route('/home',methods=['GET','POST'])
 @app.route('/',methods=['GET','POST'])
@@ -37,7 +38,14 @@ def home_page():
 	url = 'https://newsapi.org/v2/top-headlines?country=tw&apiKey=f2c3bfcff9534b6a9765a67c27e187ee'
 	news_req_data = requests.get(url)
 	news_data = news_req_data.json()
-	return render_template('home.html',tweets=tweets.items,form=form,next_url=next_url,prev_url=prev_url,current_user_user_id=current_user_user_id,searched=searched,news_data=news_data)
+
+	# weather API
+	url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=SECRET_API"
+	weather_data_url = requests.get(url)
+	weather_data = weather_data_url.json()
+	taiwan_weather = cwb_weather_data(weather_data)
+
+	return render_template('home.html',tweets=tweets.items,form=form,next_url=next_url,prev_url=prev_url,current_user_user_id=current_user_user_id,searched=searched,news_data=news_data,taiwan_weather=taiwan_weather)
 
 @app.route('/login',methods=['GET','POST'])
 def login_page():

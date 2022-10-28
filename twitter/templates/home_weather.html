@@ -18,12 +18,12 @@
 			
 			{% if i.wx12 == '晴時多雲' or i.wx12 == '多雲時晴' or i.wx12 == '陰時多雲' %}
 			<td><img class="weather_img" src="{{ url_for('static', filename='images/晴時多雲.png') }}" alt=""></td>
-			{% elif i.wx12 == '多雲短暫陣雨' or i.wx12 == '陰短暫陣雨' or i.wx12 == '多雲時陰短暫陣雨' %}
+			{% elif i.wx12 == '陰天' or i.wx12 == '多雲' or i.wx12 == '多雲時陰' %}
+			<td><img class="weather_img" src="{{ url_for('static', filename='images/多雲.png') }}" alt=""></td>
+			{% elif i.wx12 == '多雲短暫陣雨' or i.wx12 == '陰短暫陣雨' or i.wx12 == '陰時多雲短暫陣雨' or i.wx12 == '多雲時陰短暫陣雨'  %}
 			<td><img class="weather_img" src="{{ url_for('static', filename='images/陣雨.png') }}" alt=""></td>
 			{% else %}
-				{% if i.wx12 == '陰天' or i.wx12 == '多雲'%}
-				<td><img class="weather_img" src="{{ url_for('static', filename='images/多雲.png') }}" alt=""></td>
-				{% endif %}
+			<td>{{ i.wx12 }}</td>
 			{% endif %}
 		</tr>
 		</tbody>

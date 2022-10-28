@@ -9,12 +9,6 @@
 					<div class="news_title">{{ i['title'] }}</div>
 				</a>
 				{{ i['publishedAt'].replace("T"," ").replace("Z","") }} <br>
-				
-				{% if i['author'] == None %}
-					<p></p>
-				{% else %}
-					{{ i['author'] }}
-				{% endif %}
 			</div>
 		</div>
 		{% endfor %}

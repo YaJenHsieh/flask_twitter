@@ -35,7 +35,7 @@ def home_page():
 	prev_url = url_for('home_page',page=tweets.prev_num) if tweets.has_prev else None
 
 	# news API
-	url = 'https://newsapi.org/v2/top-headlines?country=tw&apiKey=f2c3bfcff9534b6a9765a67c27e187ee'
+	url = 'https://newsapi.org/v2/top-headlines?country=tw&apiKey=SECRET_KEY'
 	news_req_data = requests.get(url)
 	news_data = news_req_data.json()
 
